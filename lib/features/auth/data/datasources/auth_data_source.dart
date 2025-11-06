@@ -1,5 +1,10 @@
 
 
+import 'package:dio/dio.dart';
+
+import '../../../../core/network/api_end_points.dart';
+import '../../domain/entities/user_entities.dart';
+
 abstract class AuthRemoteDataSource {
   Future<UserModel> login(String username, String password);
 }
