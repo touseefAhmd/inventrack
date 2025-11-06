@@ -3,6 +3,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
+import '../../domain/entities/user_entities.dart';
+import '../../domain/usecases/login_usecases.dart';
+
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
