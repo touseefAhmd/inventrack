@@ -11,22 +11,23 @@ final sl = GetIt.instance;
 
 /// Call this once in `main()` before runApp()
 Future<void> init() async {
-  // 🧱 Core dependencies
+  // Core dependencies
   sl.registerLazySingleton<Dio>(() => Dio());
 
-  // 🧱 Data sources
-  sl.registerLazySingleton<AuthRemoteDataSource>(
-        () => AuthRemoteDataSourceImpl(sl()),
-  );
+  //  Data sources
+  // sl.registerLazySingleton<AuthRemoteDataSource>(
+  //       () => AuthRemoteDataSourceImpl(sl()),
+  // );
+  sl.registerLazySingleton<AuthRemoteDataSource>(() => MockAuthRemoteDataSource());
 
-  // 🧱 Repositories
+  //  Repositories
   sl.registerLazySingleton<AuthRepository>(
         () => AuthRepositoryImpl(sl()),
   );
 
-  // 🧱 Usecases
+  //  Usecases
   sl.registerLazySingleton(() => LoginUsecase(sl()));
 
-  // 🧱 Cubits (factories because each screen may create its own instance)
+  //  Cubits (factories because each screen may create its own instance)
   sl.registerFactory(() => AuthCubit(loginUsecase: sl()));
 }
