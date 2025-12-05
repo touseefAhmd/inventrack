@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:inventrack/features/routes/auth_routes.dart';
 import 'core/DI/service_locator.dart';
 import 'core/di/service_locator.dart' as di;
 import 'features/auth/presentation/UI/login_page.dart';
@@ -19,7 +20,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig:AppRouter.router,
+
       title: 'InvenTrack',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -30,7 +33,7 @@ class MyApp extends StatelessWidget {
         ),
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: const LoginPage(),
+     // home: const LoginPage(),
     );
   }
 }
