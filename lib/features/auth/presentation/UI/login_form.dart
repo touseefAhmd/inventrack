@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:inventrack/features/Dashboard/dashboard_view.dart';
 import '../cubit/auth_cubit.dart';
 
 class LoginForm extends StatefulWidget {
@@ -21,9 +23,11 @@ class _LoginFormState extends State<LoginForm> {
       child: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is AuthAuthenticated) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Welcome, ${state.user.username}!')),
-            );
+            // ScaffoldMessenger.of(context).showSnackBar(
+            //   SnackBar(content: Text('Welcome, ${state.user.username}!')),
+            // );
+            context.push('/dashboard',);
+          //  Navigator.of(context).push(MaterialPageRoute(builder: (context) => DashboardScreen(),));
             // Navigate to dashboard
           } else if (state is AuthError) {
             ScaffoldMessenger.of(context).showSnackBar(
